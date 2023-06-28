@@ -1,0 +1,121 @@
+﻿@model IEnumerable<testCRUD.Models.Pessoa>
+
+@{
+    ViewData["Title"] = "Pessoas";
+}
+
+<h1>Pessoas</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Cadastrar Nova Pessoa</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Tel. Fixo
+            </th>
+            <th>
+                Tel. Celular
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+                Sexo
+            </th>
+            <th>
+                Estado Civil
+            </th>
+            <th>
+                Salario
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>                
+                @if (item.TelefoneFixo == 0)
+                {
+                    <td>Sem Telefone</td>
+                }
+                else
+                {
+                    <td>@Html.DisplayFor(modelItem => item.TelefoneFixo)</td>
+                }
+
+                @if (item.TelefoneCel == 0)
+                {
+                    <td>Sem Telefone</td>
+                }
+                else
+                {
+                    <td>@Html.DisplayFor(modelItem => item.TelefoneCel)</td>
+                        
+                }                    
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>                
+                    @if (item.Sexo == 1)
+                    {
+                    <td>Feminino</td>
+                    }
+                    else if (item.Sexo == 2)
+                    {
+                    <td>Masculino</td>
+                    }
+                    else
+                    {
+                    <td>@Html.DisplayFor(modelItem => item.Sexo)</td>
+                    }
+
+                    @if (item.ECivil == 1)
+                    {
+                    <td>Solteiro</td>
+                    }
+                    else if (item.ECivil == 2)
+                    {
+                    <td>Casado</td>
+                    }
+                    else if (item.ECivil == 3)
+                    {
+                    <td>União estável</td>
+                    }
+                    else if (item.ECivil == 4)
+                    {
+                    <td>Divorciado</td>
+                    }
+                    else if (item.ECivil == 5)
+                    {
+                    <td>Viúvo (a)</td>
+                    }
+                    else
+                    {
+                    <td>@Html.DisplayFor(modelItem => item.ECivil)</td>
+                    }
+
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salario)
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>                    
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

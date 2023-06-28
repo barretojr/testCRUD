@@ -1,0 +1,114 @@
+﻿@model testCRUD.Models.Pessoa
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1>Detalhes</h1>
+<div>
+    <h4>Pessoa</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nome
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            Tel. Fixo
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.TelefoneFixo == 0)
+            {
+                <span>Sem Telefone</span>
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.TelefoneFixo)
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Tel. Celular
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.TelefoneCel == 0)
+            {
+                <span>Sem Telefone</span>
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.TelefoneCel)
+            }
+        </dd>
+        <dt class="col-sm-2">
+            E-mail
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            Sexo
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Sexo == 1)
+            {
+                <span>Feminino</span>
+            }
+            else if (Model.Sexo == 2)
+            {
+                <span>Masculino</span>
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.Sexo)
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Estado Civil
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.ECivil == 1)
+            {
+                <span>Solteiro</span>
+            }
+            else if (Model.ECivil == 2)
+            {
+                <span>Casado</span>
+            }
+            else if (Model.ECivil == 3)
+            {
+                <span>União estável</span>
+            }
+            else if (Model.ECivil == 4)
+            {
+                <span>Divorciado</span>
+            }
+            else if (Model.ECivil == 5)
+            {
+                <span>Viúvo(a)</span>
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ECivil)
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Salário
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Salario == 0)
+            {
+                <span>Sem Valor</span>
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.Salario)
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a class="btn btn-sm btn-primary" asp-action="Index">Voltar</a>
+</div>
